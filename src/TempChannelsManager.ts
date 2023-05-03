@@ -177,7 +177,8 @@ export class TempChannelsManager extends VoiceChannelsManager {
         let voiceChannel: VoiceChannel | null = null;
         if (parent.options.childShouldBeACopyOfParent) {
             voiceChannel = await parentChannel.clone({
-                name
+                name,
+                parent: categoryChannel?.id ?? null
             });
         } else {
             voiceChannel = await channel.guild.channels.create({
